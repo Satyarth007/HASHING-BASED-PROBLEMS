@@ -19,7 +19,7 @@ Return the number of different transformations among all words we have.
 
 
 
-
+// MY SOLUTION 
 class Solution {
     public int uniqueMorseRepresentations(String[] words) {
         HashMap<Character,String> hm=new HashMap<>();
@@ -45,5 +45,22 @@ class Solution {
         }
         
         return count;
+    }
+}
+// ALTERNATE SOLUTION FOND ON LEETCODE (MORE EEFICIENT)
+class Solution {
+    public int uniqueMorseRepresentations(String[] words) {
+        String[] chart = new String[]{".-","-...","-.-.","-..",".","..-.","--.",
+                         "....","..",".---","-.-",".-..","--","-.",
+                         "---",".--.","--.-",".-.","...","-","..-",
+                         "...-",".--","-..-","-.--","--.."};
+        Set<String> count = new HashSet();
+        for (String word : words) {
+            StringBuilder code = new StringBuilder();
+            for (char c : word.toCharArray())
+             code.append(chart[c - 'a']);
+             count.add(code.toString());
+        }
+        return count.size();
     }
 }
